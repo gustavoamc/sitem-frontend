@@ -1,5 +1,21 @@
-import axios from 'axios'
+import axios, { type InternalAxiosRequestConfig } from "axios";
 
-export default axios.create({
-    baseURL: import.meta.env.VITE_API_URL, //TODO Not working
-})
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+});
+
+//this replaces the need the header.auuthorization in every request
+api.interceptors.request.use(
+  (config: InternalAxiosRequestConfig) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.set("Authorization", `Bearer ${token}`);
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+export default api;

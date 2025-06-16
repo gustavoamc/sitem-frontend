@@ -51,7 +51,7 @@ function Register() {
           <input type="password" name="password" id="password" onChange={handleChange} />
         </div>
         <div className={styles.inputs}>
-          <button type='submit'>Entrar</button>
+          <button type='submit'>Criar Conta</button>
         </div>
       </form>
       <p>Já tem uma conta ? <a href="/login">Faça login!</a></p>
