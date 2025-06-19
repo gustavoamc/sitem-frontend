@@ -22,7 +22,6 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             {/* PRIVATE ROUTES */}
-            {/* FIXME not showing element and reload goes back to home */}
             <Route path='/dashboard' element={
               <RequireAuth>
                 <Dashboard />

@@ -8,6 +8,7 @@ function Register() {
   const { login } = useAuth()
   const navigate = useNavigate()
   const [registerInfo, setRegisterInfo] = useState({
+    username: '',
     email: '',
     password: ''
   })
@@ -39,8 +40,8 @@ function Register() {
       <br />
       <form onSubmit={handleRegister}>
         <div className={styles.inputs}>
-          <label htmlFor="nickname">Nome de usuário/Apelido:</label>
-          <input type="nickname" name="nickname" id="nickname" onChange={handleChange} />
+          <label htmlFor="username">Nome de usuário/Apelido:</label>
+          <input type="username" name="username" id="username" onChange={handleChange} />
         </div>
         <div className={styles.inputs}>
           <label htmlFor="email">Email:</label>

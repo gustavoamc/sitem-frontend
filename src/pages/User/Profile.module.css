@@ -94,3 +94,32 @@
 .cancelButton:hover {
   background-color: #666;
 }
+
+.logoutButton {
+  background-color: #db211a;
+}
+.logoutButton:hover {
+  background-color: #70110e;
+}
+
+.rightColumnHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.iconButtonDiv {
+  padding: 0.5rem;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconButtonDiv:hover {
+  background-color: #e0e0e0;
+}

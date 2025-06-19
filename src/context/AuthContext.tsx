@@ -10,8 +10,9 @@ interface AuthContextType {
 
 interface User {
   _id: string;
-  nickname: string;
+  username: string;
   email: string;
+  role: string;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
