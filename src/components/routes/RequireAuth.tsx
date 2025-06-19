@@ -1,9 +1,30 @@
-// components/RequireAuth.tsx
 import type { JSX } from "react";
-import { useAuth } from "../../hooks/useAuth";
 import { Navigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
-export default function RequireAuth({ children }: { children: JSX.Element }) {
-  const { isAuthenticated } = useAuth();
-  return isAuthenticated ? children : <Navigate to="/" />;
+interface RequireAuthProps {
+  children: JSX.Element;
+  routeRole?: "user" | "admin" | "root"; // default is "user"
+}
+
+export default function RequireAuth({ children, routeRole = "user" }: RequireAuthProps) {
+  const { isAuthenticated, user } = useAuth();
+
+  if (!isAuthenticated || !user) return <Navigate to="/" />;
+
+  //TODO  refactor this use shared types
+  const roleHierarchy = {
+    user: 1,
+    admin: 2,
+    root: 3,
+  };
+
+  const userLevel = roleHierarchy[user.role as keyof typeof roleHierarchy];
+  const requiredLevel = roleHierarchy[routeRole];
+
+  if (userLevel < requiredLevel) {
+    return <Navigate to="/" />;
+  }
+
+  return children;
 }

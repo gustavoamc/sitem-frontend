@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
 import styles from  './Home.module.css'
+import { useAuth } from '../hooks/useAuth';
 
 function Home() {
+  const { isAuthenticated } = useAuth();
+
   return (
     <div className={styles.columns}>
       <div className={`${styles.lateralColumnDiv} ${styles.left}`}>
@@ -12,13 +15,19 @@ function Home() {
         <h1 className={styles.mainTitle}>Sitem - Chat</h1>
         <h3>Bem-vindo!</h3>
         <div className={styles.container}>
-          <h2>Entre ou Crie uma conta para começar!</h2>
-          <br />
-          <Link to="/login" className={styles.button}>Entrar</Link>
-          <br />
-          <h2>ou</h2>
-          <br />
-          <Link to="/register" className={styles.button}>Criar Conta</Link>
+          {isAuthenticated ? (
+            <Link to="/dashboard" className={styles.button}>Ir para painel principal</Link>
+          ) : 
+            <>
+              <h2>Entre ou Crie uma conta para começar!</h2>
+              <br />
+              <Link to="/login" className={styles.button}>Entrar</Link>
+              <br />
+              <h2>ou</h2>
+              <br />
+              <Link to="/register" className={styles.button}>Criar Conta</Link>
+            </>
+          }
         </div>
         <h6>Todos os direitos reservados SitemTeam@2025</h6>
       </div>

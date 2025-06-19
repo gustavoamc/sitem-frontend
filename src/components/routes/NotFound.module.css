@@ -1,0 +1,39 @@
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 60px); /* Desconta a altura da navbar */
+  text-align: center;
+  padding: 2rem;
+}
+
+.notFound h1 {
+  font-size: 6rem;
+  margin-bottom: 0.5rem;
+  color: #c0392b;
+}
+
+.notFound h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.notFound p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.homeLink {
+  background-color: #aa920b;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.homeLink:hover {
+  background-color: #4b3f02;
+}
