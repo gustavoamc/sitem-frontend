@@ -19,7 +19,7 @@ export default function RequireAuth({ children, routeRole = "user" }: RequireAut
     root: 3,
   };
 
-  const userLevel = roleHierarchy[user.role as keyof typeof roleHierarchy];
+  const userLevel = roleHierarchy[user.role as keyof typeof roleHierarchy]; //"as keyof typeof roleHierarchy" so TS won't complain.
   const requiredLevel = roleHierarchy[routeRole];
 
   if (userLevel < requiredLevel) {
