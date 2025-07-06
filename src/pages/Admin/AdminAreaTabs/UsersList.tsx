@@ -28,7 +28,6 @@ export const defaultUser: User = {
 };
 
 
-//TODO search bar and sort, copy and implement from AdminPromote
 function UsersList() {
   const [defaultUsers, setDefaultUsers] = useState<User[]>([]); //for reseting sort or search
   const [users, setUsers] = useState<User[]>([]);

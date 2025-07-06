@@ -97,15 +97,14 @@ export default function AdminPromote() {
     return date.toLocaleDateString();
   }
 
-  const handlePromote = async (id: string) => {
+  const handlePromote = (id: string) => {
     const confirmation = confirm('Confirma promover o usuário para admin ?')
 
     if (!confirmation) {
       return;
     }
 
-    //TODO change from async await to api.().then().catch()
-    await api.patch(`/admin/promote/${id}`)
+    api.patch(`/admin/promote/${id}`)
       .then((response) => {
         alert(response.data.message);
         setUsers(prev => prev.map(user => user._id === id ? { ...user, role: "admin" } : user));
@@ -117,14 +116,14 @@ export default function AdminPromote() {
       })
   };
 
-  const handleDemote = async (id: string) => {
+  const handleDemote = (id: string) => {
     const confirmation = confirm('Confirma remover o usuário de admin ?')
 
     if (!confirmation) {
       return;
     }
     
-    await api.patch(`/admin/demote/${id}`)
+    api.patch(`/admin/demote/${id}`)
       .then((response) => {
         alert(response.data.message);
         setUsers(prev => prev.map(user => user._id === id ? { ...user, role: "user" } : user));
